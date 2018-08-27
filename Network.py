@@ -12,7 +12,6 @@ class Network(object):
 	def Predict(self, a):
 		for b, w in zip(self.biases, self.weights):
 			a = 1 / (1 + np.exp(-np.dot(w, a) - b));
-			print(a);
 		return np.argmax(a);
 
 	def GetWeights(self):
