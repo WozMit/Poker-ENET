@@ -237,7 +237,7 @@ class Juego:
         for g in range(len(self.pozo_reparticion)):
             if J[i][1] in self.pozo_reparticion[g]: self.Jugadores[J[i][1]].fichas += self.pozo[g]
             else:
-                while not(J[i][1] in self.pozo_reparticion[g]): i+=1
+                while i < len(J)-1 and not(J[i][1] in self.pozo_reparticion[g]): i+=1
                 self.Jugadores[J[i][1]].fichas += self.pozo[g]
         #for i in jugadores:
             #print(i,self.Jugadores[i].fichas)

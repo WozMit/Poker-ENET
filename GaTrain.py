@@ -50,5 +50,6 @@ for h in range(generations):
 			for _ in range(mutations_per_indiv):
 				idx = np.random.randint(len(Population[i]));
 				Population[i][idx] = 2 * np.random.random() - 1;
-	np.save("bestGG", Population);
+	np.save("BestGen/BestGen"+str(h+1), Population[0]);
+	np.save("LastPopulation", Population);
 	print("Generation %d complete." %(h + 1));
