@@ -1,13 +1,15 @@
 import numpy as np;
 import Network;
+from Try import *;
 
+"""
 def Evaluate(x):
 	fitness = np.zeros(n);
 	for i in range(n):
 		fitness[i] = np.sum(np.abs(x[i]));
 	x = x[np.argsort(fitness)[::-1]];
 	print("Current fitness:", np.sum(np.abs(x[0])));
-	return x;
+	return x;"""
 
 def CrossPopulation(x, y):
 	z = np.copy(x);
@@ -17,7 +19,7 @@ def CrossPopulation(x, y):
 	return z;
 
 # Choose the parameters for training the players
-n = 100;
+n = 999;
 generations = 500;
 mutation_prob = 0.1;
 mutations_per_indiv = 50;
@@ -26,7 +28,7 @@ np.random.seed(0);
 # Initialize first generation randomly
 Population = np.array([Network.Network().GetWeights() for _ in range(n)]);
 
-for _ in range(generations):
+for h in range(generations):
 	# Evaluate the population and take them sorted
 	Population = Evaluate(Population);
 
@@ -48,3 +50,5 @@ for _ in range(generations):
 			for _ in range(mutations_per_indiv):
 				idx = np.random.randint(len(Population[i]));
 				Population[i][idx] = 2 * np.random.random() - 1;
+	np.save("bestGG", Population);
+	print("Generation %d complete." %(h + 1));
