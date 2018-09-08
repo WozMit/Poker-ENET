@@ -20,13 +20,14 @@ def CrossPopulation(x, y):
 
 # Choose the parameters for training the players
 n = 999;
-generations = 500;
+generations = 100;
 mutation_prob = 0.1;
 mutations_per_indiv = 50;
 np.random.seed(0);
 
 # Initialize first generation randomly
 Population = np.array([Network.Network().GetWeights() for _ in range(n)]);
+#Population = np.load("LastPopulation.npy");
 
 for h in range(generations):
 	# Evaluate the population and take them sorted
@@ -35,11 +36,13 @@ for h in range(generations):
 	# Construct next population
 
 	# Reproduction
-	k = 10;
-	for i in range(11):
-		for j in range(i, 12):
+	k = 35;
+	Population[700:900] = Population[35:235];
+	for i in range(35):
+		for j in range(i, 36):
 			Population[k] = CrossPopulation(Population[i], Population[j]);
 			k += 1;
+	k += 200;
 	while(k < n):
 		Population[k] = Network.Network().GetWeights();
 		k += 1;
